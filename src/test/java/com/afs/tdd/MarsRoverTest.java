@@ -92,7 +92,7 @@ class MarsRoverTest {
         assertEquals(Direction.EAST, currentLocation.getDirection());
     }
     @Test
-    void should_change_to_location_0_0_E_when_executeCommand_given_0_0_South_and_command_turn_right() {
+    void should_change_to_location_0_0_E_when_executeCommand_given_0_0_South_and_command_turn_left() {
         //Given
         Location initialLocation = new Location(0, 0, Direction.SOUTH);
         Command givenCommand = Command.TURN_LEFT;
