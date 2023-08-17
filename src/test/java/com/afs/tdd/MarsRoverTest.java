@@ -30,7 +30,7 @@ class MarsRoverTest {
         Location currentLocation = marsRover.getCurrentLocation();
         // Then
         Assertions.assertEquals(0 , currentLocation.getX());
-        Assertions.assertEquals(1 , currentLocation.getY());
-        Assertions.assertEquals(Direction.NORTH , currentLocation.getDirection());
+        Assertions.assertEquals(-1 , currentLocation.getY());
+        Assertions.assertEquals(Direction.SOUTH , currentLocation.getDirection());
     }
 }
