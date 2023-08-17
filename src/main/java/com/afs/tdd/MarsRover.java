@@ -10,7 +10,7 @@ public class MarsRover {
         this.location = location;
     }
 
-    public void executeMove(Direction direction) {
+    private void executeMove(Direction direction) {
         if (direction == Direction.NORTH) {
             location.setY(location.getY() + 1);
         } else if (direction == Direction.SOUTH) {
@@ -22,32 +22,48 @@ public class MarsRover {
         }
     }
 
-    public void executeTurnLeft(Direction direction) {
+    private void executeTurnLeft(Direction direction) {
         final int x = location.getX();
         final int y = location.getY();
         if (direction == Direction.NORTH) {
-            this.location = new Location(x, y, Direction.WEST);
+            setDirectionToWest(x, y);
         } else if (direction == Direction.SOUTH) {
-            this.location = new Location(x, y, Direction.EAST);
+            setDirectionToEast(x, y);
         } else if (direction == Direction.WEST) {
-            this.location = new Location(x, y, Direction.SOUTH);
+            setDirectionToSouth(x, y);
         } else {
-            this.location = new Location(x, y, Direction.NORTH);
+            setDirectionToNorth(x, y);
         }
     }
 
-    public void executeTurnRight(Direction direction) {
+    private void executeTurnRight(Direction direction) {
         final int x = location.getX();
         final int y = location.getY();
         if (direction == Direction.NORTH) {
-            this.location = new Location(x, y, Direction.EAST);
+            setDirectionToEast(x, y);
         } else if (direction == Direction.SOUTH) {
-            this.location = new Location(x, y, Direction.WEST);
+            setDirectionToWest(x, y);
         } else if (direction == Direction.WEST) {
-            this.location = new Location(x, y, Direction.NORTH);
+            setDirectionToNorth(x, y);
         } else {
-            this.location = new Location(x, y, Direction.SOUTH);
+            setDirectionToSouth(x, y);
         }
+    }
+
+    private void setDirectionToNorth(int x, int y) {
+        this.location = new Location(x, y, Direction.NORTH);
+    }
+
+    private void setDirectionToSouth(int x, int y) {
+        this.location = new Location(x, y, Direction.SOUTH);
+    }
+
+    private void setDirectionToWest(int x, int y) {
+        this.location = new Location(x, y, Direction.WEST);
+    }
+
+    private void setDirectionToEast(int x, int y) {
+        this.location = new Location(x, y, Direction.EAST);
     }
 
     public void executeCommand(Command givenCommand) {
