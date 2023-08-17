@@ -34,6 +34,8 @@ public class MarsRover {
                 this.location = new Location(location.getX(), location.getY(), Direction.EAST);
             } else if (location.getDirection() == Direction.SOUTH) {
                 this.location = new Location(location.getX(), location.getY(), Direction.WEST);
+            } else if (location.getDirection() == Direction.WEST) {
+                this.location = new Location(location.getX(), location.getY(), Direction.NORTH);
             }
         }
     }
