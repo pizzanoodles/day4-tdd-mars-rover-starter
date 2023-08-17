@@ -2,6 +2,10 @@ package com.afs.tdd;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.NoRouteToHostException;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MarsRoverTest {
@@ -174,5 +178,20 @@ class MarsRoverTest {
         assertEquals(0, currentLocation.getX());
         assertEquals(0, currentLocation.getY());
         assertEquals(Direction.SOUTH, currentLocation.getDirection());
+    }
+
+    @Test
+    void should_change_to_location_0_1_N_when_executeBatchCommands_given_0_0_North_andCommand_MLMR() {
+        //Given
+        Location initialLocation = new Location(0, 0, Direction.NORTH);
+        List<Command> commands = Arrays.asList(Command.MOVE, Command.TURN_LEFT, Command.MOVE, Command.TURN_RIGHT);
+        MarsRover marsRover = new MarsRover(initialLocation);
+        //When
+        marsRover.executeBatchCommands(commands);
+        Location currentLocation = marsRover.getCurrentLocation();
+        //Then
+        assertEquals(-1, currentLocation.getX());
+        assertEquals(1, currentLocation.getY());
+        assertEquals(Direction.NORTH, currentLocation.getDirection());
     }
 }
