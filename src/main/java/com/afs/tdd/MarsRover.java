@@ -20,19 +20,24 @@ public class MarsRover {
             location.setX(location.getX() + 1);
         }
     }
+    public void executeTurnLeft(Direction direction) {
+        final int x = location.getX();
+        final int y = location.getY();
+        if (direction == Direction.NORTH) {
+            this.location = new Location(x, y, Direction.WEST);
+        } else if (direction == Direction.SOUTH) {
+            this.location = new Location(x, y, Direction.EAST);
+        } else if (direction == Direction.WEST) {
+            this.location = new Location(x, y, Direction.SOUTH);
+        } else {
+            this.location = new Location(x, y, Direction.NORTH);
+        }
+    }
     public void executeCommand(Command givenCommand) {
         if (givenCommand == Command.MOVE) {
             executeMove(location.getDirection());
         } else if (givenCommand == Command.TURN_LEFT) {
-            if (location.getDirection() == Direction.NORTH) {
-                this.location = new Location(location.getX(), location.getY(), Direction.WEST);
-            } else if (location.getDirection() == Direction.SOUTH) {
-                this.location = new Location(location.getX(), location.getY(), Direction.EAST);
-            } else if (location.getDirection() == Direction.WEST) {
-                this.location = new Location(location.getX(), location.getY(), Direction.SOUTH);
-            } else if (location.getDirection() == Direction.EAST) {
-                this.location = new Location(location.getX(), location.getY(), Direction.NORTH);
-            }
+            executeTurnLeft(location.getDirection());
         } else if (givenCommand == Command.TURN_RIGHT) {
             if (location.getDirection() == Direction.NORTH) {
                 this.location = new Location(location.getX(), location.getY(), Direction.EAST);
