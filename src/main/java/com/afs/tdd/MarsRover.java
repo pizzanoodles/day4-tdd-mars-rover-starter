@@ -9,18 +9,20 @@ public class MarsRover {
     public MarsRover(Location location) {
         this.location = location;
     }
-
+    public void executeMove(Direction direction) {
+        if (direction == Direction.NORTH) {
+            location.setY(location.getY() + 1);
+        } else if (direction == Direction.SOUTH) {
+            location.setY(location.getY() - 1);
+        } else if (direction == Direction.WEST) {
+            location.setX(location.getX() - 1);
+        } else {
+            location.setX(location.getX() + 1);
+        }
+    }
     public void executeCommand(Command givenCommand) {
         if (givenCommand == Command.MOVE) {
-            if (location.getDirection() == Direction.NORTH) {
-                location.setY(location.getY() + 1);
-            } else if (location.getDirection() == Direction.SOUTH) {
-                location.setY(location.getY() - 1);
-            } else if (location.getDirection() == Direction.EAST) {
-                location.setX(location.getX() + 1);
-            } else if (location.getDirection() == Direction.WEST) {
-                location.setX(location.getX() - 1);
-            }
+            executeMove(location.getDirection());
         } else if (givenCommand == Command.TURN_LEFT) {
             if (location.getDirection() == Direction.NORTH) {
                 this.location = new Location(location.getX(), location.getY(), Direction.WEST);
