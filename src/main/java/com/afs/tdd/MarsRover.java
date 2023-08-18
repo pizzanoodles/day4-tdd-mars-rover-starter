@@ -39,6 +39,7 @@ public class MarsRover {
     private void executeTurnRight(Direction direction) {
         final int x = location.getX();
         final int y = location.getY();
+        //TODO create a single method that will set the direction and the parameter is depends on the Direction,X,Y
         if (direction == Direction.NORTH) {
             setDirectionToEast(x, y);
         } else if (direction == Direction.SOUTH) {
