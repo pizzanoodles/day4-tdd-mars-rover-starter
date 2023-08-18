@@ -9,7 +9,7 @@ public class MarsRover {
     public MarsRover(Location location) {
         this.location = location;
     }
-
+    //TODO import static import for Direction Enum
     private void executeMove(Direction direction) {
         if (direction == Direction.NORTH) {
             location.setY(location.getY() + 1);
